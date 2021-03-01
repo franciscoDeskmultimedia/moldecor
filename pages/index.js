@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { moldecorProd } from "../lib/api";
 
-export default function Home() {
+export default function Home({prods}) {
+  console.log(prods)
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
@@ -9,6 +11,22 @@ export default function Home() {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
+      {prods
+            .slice(0, prods.length - 1)
+            .map(({ categoria, marca, modelo, hcm }) => (
+              <a
+                className="p-4 border rounded border-grey-200 hover:shadow-lg hover:border-transparent"
+                key={modelo}
+                href='#'
+                target="_blank"
+              >
+                <h3 className="mb-2 font-bold">{modelo}</h3>
+                <div dangerouslySetInnerHTML={{ __html: categoria }} />
+                <span className="block mt-4 text-blue-600 hover:text-blue-400 hover:underline">
+                  {marca}
+                </span>
+              </a>
+            ))}
         <h1 className="text-6xl font-bold">
           Welcome to{' '}
           <a className="text-blue-600" href="https://nextjs.org">
@@ -79,4 +97,18 @@ export default function Home() {
       </footer>
     </div>
   )
+}
+
+export async function getStaticProps(context) {
+  const prods = await moldecorProd();
+
+  return {
+    props: {
+      prods,
+    },
+    // Next.js will attempt to re-generate the page:
+    // - When a request comes in
+    // - At most once every second
+    revalidate: 1, // In seconds
+  };
 }
