@@ -11,9 +11,10 @@ export default function Home({prods}) {
       </Head>
 
       <main className="flex flex-col items-center justify-center flex-1 px-20 text-center">
+        <img src='https://drive.google.com//uc?export=view&id=1FZlJ_4So36ILo-2DY4AOLfpzU1XUVZ0v'></img>
       {prods
-            .slice(0, prods.length - 1)
-            .map(({ categoria, marca, modelo, hcm }) => (
+            .slice(1, prods.length - 1)
+            .map(({ categoria, marca, modelo, hcm ,image}) => (
               <a
                 className="p-4 border rounded border-grey-200 hover:shadow-lg hover:border-transparent"
                 key={modelo}
@@ -25,6 +26,8 @@ export default function Home({prods}) {
                 <span className="block mt-4 text-blue-600 hover:text-blue-400 hover:underline">
                   {marca}
                 </span>
+                <img src={image}></img>
+                <p>{image}</p>
               </a>
             ))}
         <h1 className="text-6xl font-bold">
