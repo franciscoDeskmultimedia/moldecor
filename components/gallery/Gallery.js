@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import Link from 'next/link'
 
 const Gallery = (props) => {
     useEffect(()=>{
@@ -48,11 +49,11 @@ const Gallery = (props) => {
                 
                 <div className="row alime-portfolio">
 
-                    {theProds.slice(1, theProds.length - 1).map(({ categoria, marca, modelo, hcm ,image})=>{
+                    {theProds.slice(1, theProds.length - 1).map(({ categoria, marca, modelo, hcm ,image,imageData})=>{
                         return (
                           <div
                             key={modelo}
-                            className={`"col-12 col-sm-6 col-lg-3 single_gallery_item ${categoria.toLowerCase().replace(' ','' )} mb-30 wow fadeInUp"`}
+                            className={`"col-12 col-sm-6 col-lg-4 single_gallery_item ${categoria.toLowerCase().replace(' ','' )} mb-30 wow fadeInUp"`}
                             data-wow-delay="100ms"
                           >
                             <div className="single-portfolio-content">
@@ -60,13 +61,24 @@ const Gallery = (props) => {
                                 src={image ? image : "img/bg-img/3.jpg"}
                                 alt=""
                               />
+                              <div className='prodInfo'>
+                                <p>{categoria} - {modelo}</p>
+                                <p>H: <span>{hcm}</span></p>
+                              </div>
                               <div className="hover-content">
-                                <a
+                                  <Link href='#'>
+                                     <img
+                                src={imageData ? imageData : image}
+                                alt=""
+                              />
+                                  </Link>
+                             
+                                {/* <a
                                   href={image ? image : "img/bg-img/3.jpg"}
                                   className="portfolio-img"
                                 >
-                                  {modelo}
-                                </a>
+                                  +
+                                </a> */}
                               </div>
                             </div>
                           </div>

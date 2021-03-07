@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
+.prodInfo {
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    color: white;
+    p{
+        color:white;
+        font-weight: bold;
+    }
+}
 @tailwind utilities;
