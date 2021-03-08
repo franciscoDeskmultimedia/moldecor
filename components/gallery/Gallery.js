@@ -22,8 +22,6 @@ const Gallery = (props) => {
         });
     },[])
     const theProds =props.productos;
-    console.log('saco')
-    console.log(theProds)
     return (
         <div className="clearfix alime-portfolio-area section-padding-80">
             {props.productos.map(({ categoria, marca, modelo, hcm ,image})=>{
@@ -66,12 +64,14 @@ const Gallery = (props) => {
                                 <p>H: <span>{hcm}</span></p>
                               </div>
                               <div className="hover-content">
-                                  <Link href='#'>
+                                  <Link href={`productos/${modelo}`}>
+                                     
                                      <img
-                                src={imageData ? imageData : image}
+                                src={imageData ? imageData : "img/bg-img/3.jpg"}
                                 alt=""
                               />
-                                  </Link>
+                              
+                              </Link>
                              
                                 {/* <a
                                   href={image ? image : "img/bg-img/3.jpg"}
@@ -88,11 +88,11 @@ const Gallery = (props) => {
                     
                 </div>
     
-                <div className="row">
+                {/* <div className="row">
                     <div className="text-center col-12 wow fadeInUp" data-wow-delay="700ms">
                         <a href="#" className="btn alime-btn btn-2 mt-15">View More</a>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     )

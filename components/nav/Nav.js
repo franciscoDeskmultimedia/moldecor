@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
+import Link from 'next/link';
 
 const Nav = () => {
   useEffect(()=>{
-    (function ($) {
+    
       $.fn.classyNav = function (options) {
           // Variables
           var navContainer = $('.classy-nav-container');
@@ -85,7 +86,6 @@ const Nav = () => {
           });
       };
       
-  }(jQuery));
     $('#alimeNav').classyNav();
   },[])
     return (
@@ -119,7 +119,9 @@ const Nav = () => {
                   <div className="classynav">
                     <ul id="nav">
                       <li className="active">
-                        <a href="./index.html">Home</a>
+                        <Link href="/">
+                          <a>Home</a>
+                        </Link>
                       </li>
                       <li>
                         <a href="#">Pages</a>
