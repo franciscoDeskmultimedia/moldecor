@@ -2,8 +2,7 @@ import Head from 'next/head'
 import {  getProducts ,getHome } from "../lib/api";
 import Nav from "../components/nav/Nav";
 import Hero from "../components/hero/Hero";
-import Gallery from "../components/gallery/Gallery";
-import Link from 'next/link';
+
 
 export default function Home({prods, home }) {
   console.log(prods)
