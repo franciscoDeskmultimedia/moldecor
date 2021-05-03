@@ -39,7 +39,7 @@ const Hero = (props) => {
                   </div>
                   <Image
                     className="object-cover"
-                    src={`http://localhost:1337${item.hero_image.url}`}
+                    src={`https://moldecor.herokuapp.com${item.hero_image.url}`}
                     layout="fill"
                   />
                 </div>
