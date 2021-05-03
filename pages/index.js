@@ -45,5 +45,6 @@ export async function getStaticProps(context) {
     // - When a request comes in
     // - At most once every second
     revalidate: 1, // In seconds
+    notFound:true,
   };
 }
