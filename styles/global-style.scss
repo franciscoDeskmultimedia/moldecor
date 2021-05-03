@@ -10,4 +10,16 @@
         font-weight: bold;
     }
 }
+a.nav-brand img {
+    max-width: 150px;
+}
+.hero-slider{
+    height: 85vh;
+    .slider-text-content{
+        z-index: 999;
+        top: 50%;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%)
+    } 
+}
 @tailwind utilities;

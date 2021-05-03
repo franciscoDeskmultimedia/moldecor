@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Link from 'next/link'
+// import { identitytoolkit } from 'googleapis/build/src/apis/identitytoolkit';
 
 const Gallery = (props) => {
     useEffect(()=>{
@@ -22,80 +23,98 @@ const Gallery = (props) => {
         });
     },[])
     const theProds =props.productos;
+    console.log(theProds);
+    // theProds.map(({Name, id})=>{
+    //     console.log(Name + ' and id : ' + id )
+    // })
     return (
-        <div className="clearfix alime-portfolio-area section-padding-80">
-            {props.productos.map(({ categoria, marca, modelo, hcm ,image})=>{
-                    <p key={modelo}> {modelo}</p>
-                })}
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="alime-projects-menu">
-                            <div className="text-center portfolio-menu">
-                                <button className="btn active" data-filter="*">Todos</button>
-                                <button className="btn" data-filter=".cornisa">Cornisas</button>
-                                <button className="btn" data-filter=".esquinas">Esquinas</button>
-                                <button className="btn" data-filter=".moldura">Molduras</button>
-                                <button className="btn" data-filter=".rosetón">Rosetón</button>
-                                <button className="btn" data-filter=".wallpanel">Wall panel</button>
-                                <button className="btn" data-filter=".pegamento">Pegamentos</button>
-                                <button className="btn" data-filter=".rastrera">Rastreras</button>
-                            </div>
-                        </div>
-                    </div>
+      <div className="clearfix alime-portfolio-area section-padding-80">
+        {theProds.map(
+          (item) => {
+              
+                <p key={item.id}> {item.brand.Name}</p>
+            
+          }
+        )}
+        <div className="container-fluid">
+          <div className="row">
+            <div className="col-12">
+              <div className="alime-projects-menu">
+                <div className="text-center portfolio-menu">
+                  <button className="btn active" data-filter="*">
+                    Todos
+                  </button>
+                  <button className="btn" data-filter=".cornisa">
+                    Cornisas
+                  </button>
+                  <button className="btn" data-filter=".esquinas">
+                    Esquinas
+                  </button>
+                  <button className="btn" data-filter=".moldura">
+                    Molduras
+                  </button>
+                  <button className="btn" data-filter=".rosetón">
+                    Rosetón
+                  </button>
+                  <button className="btn" data-filter=".wallpanel">
+                    Wall panel
+                  </button>
+                  <button className="btn" data-filter=".pegamento">
+                    Pegamentos
+                  </button>
+                  <button className="btn" data-filter=".rastrera">
+                    Rastreras
+                  </button>
                 </div>
-                
-                <div className="row alime-portfolio">
-
-                    {theProds.slice(1, theProds.length - 1).map(({ categoria, marca, modelo, hcm ,image,imageData})=>{
-                        return (
-                          <div
-                            key={modelo}
-                            className={`"col-12 col-sm-6 col-lg-4 single_gallery_item ${categoria.toLowerCase().replace(' ','' )} mb-30 wow fadeInUp"`}
-                            data-wow-delay="100ms"
-                          >
-                            <div className="single-portfolio-content">
-                              <img
-                                src={image ? image : "img/bg-img/3.jpg"}
-                                alt=""
-                              />
-                              <div className='prodInfo'>
-                                <p>{categoria} - {modelo}</p>
-                                <p>H: <span>{hcm}</span></p>
-                              </div>
-                              <div className="hover-content">
-                                  <Link href={`productos/${modelo}`}>
-                                     
-                                     <img
-                                src={imageData ? imageData : "img/bg-img/3.jpg"}
-                                alt=""
-                              />
-                              
-                              </Link>
-                             
-                                {/* <a
-                                  href={image ? image : "img/bg-img/3.jpg"}
-                                  className="portfolio-img"
-                                >
-                                  +
-                                </a> */}
-                              </div>
-                            </div>
-                          </div>
-                        );
-                        
-                    })}
-                    
-                </div>
-    
-                {/* <div className="row">
-                    <div className="text-center col-12 wow fadeInUp" data-wow-delay="700ms">
-                        <a href="#" className="btn alime-btn btn-2 mt-15">View More</a>
-                    </div>
-                </div> */}
+              </div>
             </div>
+          </div>
+
+          <div className="row alime-portfolio">
+            {theProds.map(
+              (item) => {
+                return (
+                  <div
+                    key={item.id}
+                    className={`"col-12 col-sm-6 col-lg-4 single_gallery_item ${item.category.Name.toLowerCase().replace(' ','')} mb-30 wow fadeInUp"`}
+                    data-wow-delay="100ms"
+                  >
+                    <div className="single-portfolio-content">
+                      <img
+                        src={
+                          item.Product_Image ? 'http://localhost:1337'+item.Product_Image.url : "img/bg-img/3.jpg"
+                        }
+                        alt=""
+                      />
+                      <div className="prodInfo">
+                        <p>
+                          {item.category.Name} - {item.brand.Name} - {item.Name}
+                        </p>
+                        <p>
+                          H: <span>{item.Measures.H}</span>
+                        </p>
+                      </div>
+                      <div className="hover-content">
+                        <Link href={`productos/${item.Name}`}>
+                          <img
+                            src={
+                              item.Image_data
+                                ? 'http://localhost:1337'+item.Image_data.url
+                                : "img/bg-img/3.jpg"
+                            }
+                            alt=""
+                          />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+            )}
+          </div>
         </div>
-    )
+      </div>
+    );
 }
 
 export default Gallery
