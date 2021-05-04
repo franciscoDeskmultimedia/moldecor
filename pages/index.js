@@ -2,6 +2,7 @@ import Head from 'next/head'
 import {  getProducts ,getHome } from "../lib/api";
 import Nav from "../components/nav/Nav";
 import Hero from "../components/hero/Hero";
+import ProductGrid from '../components/ProductGrid/ProductGrid';
 
 
 export default function Home({prods, home }) {
@@ -19,10 +20,10 @@ export default function Home({prods, home }) {
       {/* <Hero /> */}
       <div>
         {home.map((item) => {
-          console.log(item)
           return (
-            <div key={item.id}>
-              {item.__typename == 'ComponentSliderHeroSlider' ? <Hero slides={item.hero_sliders} /> : null}
+            <div className={item.id + item.__typename} key={item.id + item.__typename}>
+              {item.__typename == 'ComponentSliderHeroSlider' ? <Hero slides={item.hero_sliders} /> : null }
+              {item.__typename == 'ComponentProductGridProductGrid' ? <ProductGrid products={prods} /> : null }
             </div>
           );
         })}
@@ -45,6 +46,6 @@ export async function getStaticProps(context) {
     // - When a request comes in
     // - At most once every second
     revalidate: 1, // In seconds
-    notFound:true,
+    // notFound:true,
   };
 }

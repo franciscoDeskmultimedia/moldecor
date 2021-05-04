@@ -22,7 +22,7 @@ const Hero = (props) => {
         >
           {props.slides.map((item)=>{
             return (
-              <SwiperSlide>
+              <SwiperSlide key={item.id}>
                 <div className="w-full hero-slider">
                   <div className="absolute slider-text-content">
                     <h1 className="mb-5 text-5xl font-extrabold text-center text-white ">
@@ -39,7 +39,7 @@ const Hero = (props) => {
                   </div>
                   <Image
                     className="object-cover"
-                    src={`https://moldecor.herokuapp.com${item.hero_image.url}`}
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.hero_image.url}`}
                     layout="fill"
                   />
                 </div>

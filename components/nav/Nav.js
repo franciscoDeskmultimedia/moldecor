@@ -48,7 +48,7 @@ const Nav = () => {
             <div className='search'>
               <input type='text' />
             </div>
-            <nav className="hidden space-x-10 md:flex">
+            {/* <nav className="hidden space-x-10 md:flex">
               <Link href="/">
                 <a className="text-base font-medium text-white hover:text-gray-900">
                   Inicio
@@ -72,13 +72,7 @@ const Nav = () => {
                   Blog
                 </a>
               </Link>
-
-              {/* <Link href="/news">
-                <a className="text-base font-medium text-gray-500 hover:text-gray-900">
-                  Contactos
-                </a>
-              </Link> */}
-            </nav>
+            </nav> */}
             <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
               <Link href="/contacto">
                 <a className="px-5 py-3 text-base font-medium text-gray-500 border-2 border-gray-500 whitespace-nowrap hover:text-gray-900">
@@ -90,13 +84,13 @@ const Nav = () => {
         </div>
 
         {/* mobile */}
-        <div className="absolute inset-x-0 top-0 z-50 transition origin-top-right transform md:hidden">
-          <div className="bg-white divide-y-2 rounded-lg ring-1 ring-black ring-opacity-5 divide-gray-50">
+        <div className="absolute inset-x-0 top-0 z-50 transition origin-top-right transform mobile-nav md:hidden">
+          <div className="bg-gray-800 divide-y-2 rounded-lg ring-1 ring-black ring-opacity-5 divide-gray-50">
             <div className="px-5 pt-5 pb-6">
               <div className="flex items-center justify-between">
                 <div>
                   <Link href="/">
-                    <a>
+                    <a className='flex items-center'>
                       <Image
                         className="w-auto h-8 cursor-pointer sm:h-10"
                         src="/img/moldecor-logo-white.png"
