@@ -1,13 +1,14 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import {  getProducts ,getHome } from "../lib/api";
 import Nav from "../components/nav/Nav";
 import Hero from "../components/hero/Hero";
 import ProductGrid from '../components/ProductGrid/ProductGrid';
+import SingleProductContext from '../store/single-product';
+import {useContext} from 'react';
 
 
 export default function Home({prods, home }) {
-  console.log(prods)
-  console.log(home)
+  const selectedProd = useContext(SingleProductContext); 
   return (
     <div>
       <Head>
@@ -27,6 +28,9 @@ export default function Home({prods, home }) {
             </div>
           );
         })}
+      </div>
+      <div>
+        <p>{selectedProd.slideProd ? selectedProd.slideProd.name : null}</p>
       </div>
       {/* <Gallery productos={prods}></Gallery> */}
     </div>
