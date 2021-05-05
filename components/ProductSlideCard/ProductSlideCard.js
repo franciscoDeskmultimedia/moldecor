@@ -24,8 +24,7 @@ const ProductSlideCard = (props) => {
           onClick={() => {
             theprod.setProd(clean);
           }}
-        >
-        </div>
+        ></div>
         <div className="z-50 w-full h-screen px-10 py-5 overflow-y-scroll bg-white sm:w-3/5 lg:w-2/5">
           <div className="relative flex mb-5">
             <p
@@ -42,13 +41,13 @@ const ProductSlideCard = (props) => {
           </div>
           <Image
             layout="responsive"
-            src={props.prodItem.imageURL}
+            src={props.prodItem.imageURL ? props.prodItem.imageURL : '/img/moldecor-logo2.png'}
             width={props.prodItem.imageWidth}
             height={props.prodItem.imageHeight}
           />
-          <div className='mt-10'>
-              <p className='text-bold'>{props.prodItem.name}</p>
-              <p>${props.prodItem.price}</p>
+          <div className="mt-10">
+            <p className="text-bold">{props.prodItem.name}</p>
+            <p>${props.prodItem.price}</p>
           </div>
         </div>
       </div>

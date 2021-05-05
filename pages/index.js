@@ -41,9 +41,9 @@ export default function Home({prods, home }) {
           );
         })}
       </div>
-      {selectedProd.slideProd.name ? (
+      
         <ProductSlideCard prodItem={selectedProd.slideProd} />
-      ) : null}
+      
 
       {/* <div>
         <p>{selectedProd.slideProd ? selectedProd.slideProd.name : null}</p>
