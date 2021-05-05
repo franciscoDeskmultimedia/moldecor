@@ -1,14 +1,15 @@
 import Head from 'next/head';
-import {  getProducts ,getHome } from "../lib/api";
+import {  getProducts ,getHome, getCategories } from "../lib/api";
 import Nav from "../components/nav/Nav";
 import Hero from "../components/hero/Hero";
 import ProductGrid from '../components/ProductGrid/ProductGrid';
 import SingleProductContext from '../store/single-product';
 import ProductSlideCard from '../components/ProductSlideCard/ProductSlideCard';
 import {useContext} from 'react';
+import Image from 'next/image';
 
 
-export default function Home({prods, home }) {
+export default function Home({prods, home, categories }) {
   const selectedProd = useContext(SingleProductContext); 
   return (
     <div>
@@ -24,6 +25,16 @@ export default function Home({prods, home }) {
       <Nav></Nav>
 
       {/* <Hero /> */}
+      <div className='flex flex-wrap categories'>
+        {categories.map((item)=>{
+          return (
+            <div className='w-1/5'>
+              <Image src={process.env.NEXT_PUBLIC_STRAPI_API_URL + item.category_image.url} width={item.category_image.width} height={item.category_image.height} />
+              <p>{item.Name}</p>
+            </div>
+          )
+        })}
+      </div>
       <div>
         {home.map((item) => {
           return (
@@ -56,11 +67,13 @@ export default function Home({prods, home }) {
 export async function getStaticProps(context) {
   const prods = await getProducts();
   const home = await getHome();
+  const categories = await getCategories();
 
   return {
     props: {
       prods,
-      home
+      home,
+      categories
     },
     // Next.js will attempt to re-generate the page:
     // - When a request comes in
