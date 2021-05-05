@@ -5,7 +5,7 @@ import { useState } from 'react';
 const Nav = () => {
   const [openNav, setOpenNav] = useState(0);
     return (
-      <div className="relative w-full bg-gray-800">
+      <div className="relative w-full bg-gray-800 ">
         <div className="px-4 mx-auto max-w-7xl sm:px-6">
           <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">

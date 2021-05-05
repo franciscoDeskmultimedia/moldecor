@@ -41,7 +41,11 @@ const ProductSlideCard = (props) => {
           </div>
           <Image
             layout="responsive"
-            src={props.prodItem.imageURL ? props.prodItem.imageURL : '/img/moldecor-logo2.png'}
+            src={
+              props.prodItem.imageURL
+                ? props.prodItem.imageURL
+                : "/img/moldecor-logo2.png"
+            }
             width={props.prodItem.imageWidth}
             height={props.prodItem.imageHeight}
           />
