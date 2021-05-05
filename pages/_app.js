@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }) {
   const [slideProd, setSlideProd] = useState({
     imageURL: "",
     imageWidth: "",
-    imageheight: "",
+    imageHeight: "",
     name: "",
     price: "",
   });

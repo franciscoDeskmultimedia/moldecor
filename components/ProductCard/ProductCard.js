@@ -8,7 +8,7 @@ const ProductCard = (props) => {
         singleProd.setProd({
                 imageURL: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${props.product.Product_Image.url}`,
                 imageWidth: props.product.Product_Image.width,
-                imageheight: props.product.Product_Image.height,
+                imageHeight: props.product.Product_Image.height,
                 name: props.product.Name,
                 price: props.product.PVP,
             }
@@ -35,8 +35,8 @@ const ProductCard = (props) => {
             />
           </div>
           <div className="py-5 product-detail px-7">
-            <h3>Nombre: {props.product.Name}</h3>
-            <p>Precio: ${props.product.PVP}</p>
+            <h3 className='font-bold '>{props.product.Name}</h3>
+            <p>${props.product.PVP}</p>
             {/* <div className="product-item-measures">
               <h4>Medidas</h4>
               <ul className='pl-3 '>

@@ -4,6 +4,7 @@ import Nav from "../components/nav/Nav";
 import Hero from "../components/hero/Hero";
 import ProductGrid from '../components/ProductGrid/ProductGrid';
 import SingleProductContext from '../store/single-product';
+import ProductSlideCard from '../components/ProductSlideCard/ProductSlideCard';
 import {useContext} from 'react';
 
 
@@ -13,6 +14,10 @@ export default function Home({prods, home }) {
     <div>
       <Head>
         <title>Moldecor</title>
+        <link
+          href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet"
+        ></link>
         {/* <link rel="icon" href="/favicon-white.png" />
         <link rel="stylesheet" href="css/style-main.css"></link> */}
       </Head>
@@ -22,16 +27,27 @@ export default function Home({prods, home }) {
       <div>
         {home.map((item) => {
           return (
-            <div className={item.id + item.__typename} key={item.id + item.__typename}>
-              {item.__typename == 'ComponentSliderHeroSlider' ? <Hero slides={item.hero_sliders} /> : null }
-              {item.__typename == 'ComponentProductGridProductGrid' ? <ProductGrid products={prods} /> : null }
+            <div
+              className={item.id + item.__typename}
+              key={item.id + item.__typename}
+            >
+              {item.__typename == "ComponentSliderHeroSlider" ? (
+                <Hero slides={item.hero_sliders} />
+              ) : null}
+              {item.__typename == "ComponentProductGridProductGrid" ? (
+                <ProductGrid products={prods} />
+              ) : null}
             </div>
           );
         })}
       </div>
-      <div>
+      {selectedProd.slideProd.name ? (
+        <ProductSlideCard prodItem={selectedProd.slideProd} />
+      ) : null}
+
+      {/* <div>
         <p>{selectedProd.slideProd ? selectedProd.slideProd.name : null}</p>
-      </div>
+      </div> */}
       {/* <Gallery productos={prods}></Gallery> */}
     </div>
   );
