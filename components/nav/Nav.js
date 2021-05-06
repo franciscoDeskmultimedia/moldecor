@@ -9,9 +9,10 @@ const Nav = () => {
   const searchHandle = (event) => {
     search.setSearch(()=>{return(event.target.value)})
     console.log(event.target.value)
+    window.scrollTo({ top: 500, behavior: 'smooth' })
   }
     return (
-      <div className="relative w-full bg-gray-800 ">
+      <div className="fixed top-0 left-0 z-40 w-full bg-gray-800 ">
         <div className="px-4 mx-auto max-w-7xl sm:px-6">
           <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
             <div className="flex justify-start lg:w-0 lg:flex-1">
