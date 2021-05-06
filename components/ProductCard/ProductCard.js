@@ -13,18 +13,10 @@ const ProductCard = (props) => {
                 price: props.product.PVP,
             }
         );
-        // singleProd={
-        //   ...singleProd,
-        //   imageURL: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${props.product.Product_Image.url}`,
-        //   imageWidth: props.product.Product_Image.width,
-        //   imageheight: props.product.Product_Image.height,
-        //   name: props.product.Name,
-        //   price: props.product.PVP,
-        // };
         console.log(singleProd.slideProd)
     }
     return (
-      <div className="w-full px-3 py-4 sm:w-1/3 lg:w-1/5 md:w-1/4 " onClick={populateSingleProd}>
+      <div className={`w-full px-3 py-4 sm:w-1/3 lg:w-1/5 md:w-1/4 ${!props.product.Name.toLowerCase().includes(singleProd.search.toLowerCase()) ? 'hidden' : null }`} onClick={populateSingleProd}>
         <div className="rounded-md shadow-lg">
           <div className="relative product-image">
             <Image

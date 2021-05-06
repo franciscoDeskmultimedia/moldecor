@@ -1,9 +1,15 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import SingleProductContext from '../../store/single-product';
 
 const Nav = () => {
   const [openNav, setOpenNav] = useState(0);
+  const search = useContext(SingleProductContext);
+  const searchHandle = (event) => {
+    search.setSearch(()=>{return(event.target.value)})
+    console.log(event.target.value)
+  }
     return (
       <div className="relative w-full bg-gray-800 ">
         <div className="px-4 mx-auto max-w-7xl sm:px-6">
@@ -46,7 +52,7 @@ const Nav = () => {
               </button> */}
             </div>
             <div className='search'>
-              <input type='text' />
+              <input onChange={searchHandle} type='text' />
             </div>
             {/* <nav className="hidden space-x-10 md:flex">
               <Link href="/">

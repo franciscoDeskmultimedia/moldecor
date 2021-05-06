@@ -17,9 +17,11 @@ function MyApp({ Component, pageProps }) {
     name: "",
     price: "",
   });
+  const [catFilter, setCatFilter] = useState('')
+  const [search,setSearch] = useState('')
 
   return (
-    <SingleProductContext.Provider value={{ slideProd: slideProd, setProd : setSlideProd }}>
+    <SingleProductContext.Provider value={{ slideProd: slideProd, setProd : setSlideProd, catFilter: catFilter, setCatFilter: setCatFilter, search: search, setSearch: setSearch}}>
       <Component {...pageProps} />
     </SingleProductContext.Provider>
   );

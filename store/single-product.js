@@ -8,7 +8,11 @@ const SingleProductContext = createContext({
         name: "",
         price: "",
     },
-    setProd : () => {}
+    setProd : () => {},
+    catFilter: '',
+    setCatFilter: () => {},
+    search:'',
+    setSearch:()=>{}
     
 });
 

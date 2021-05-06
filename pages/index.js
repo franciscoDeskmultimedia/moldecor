@@ -6,6 +6,7 @@ import ProductGrid from '../components/ProductGrid/ProductGrid';
 import SingleProductContext from '../store/single-product';
 import ProductSlideCard from '../components/ProductSlideCard/ProductSlideCard';
 import {useContext} from 'react';
+import CatgoriesSlide from '../components/CategoriesSlide/CategoriesSlide';
 import Image from 'next/image';
 
 
@@ -25,16 +26,6 @@ export default function Home({prods, home, categories }) {
       <Nav></Nav>
 
       {/* <Hero /> */}
-      <div className='flex flex-wrap categories'>
-        {categories.map((item)=>{
-          return (
-            <div className='w-1/5'>
-              <Image src={process.env.NEXT_PUBLIC_STRAPI_API_URL + item.category_image.url} width={item.category_image.width} height={item.category_image.height} />
-              <p>{item.Name}</p>
-            </div>
-          )
-        })}
-      </div>
       <div>
         {home.map((item) => {
           return (
@@ -48,6 +39,7 @@ export default function Home({prods, home, categories }) {
               {item.__typename == "ComponentProductGridProductGrid" ? (
                 <ProductGrid products={prods} />
               ) : null}
+              {item.__typename == "ComponentPageBuilderCategories" ? <CatgoriesSlide cat={categories} /> : null }
             </div>
           );
         })}

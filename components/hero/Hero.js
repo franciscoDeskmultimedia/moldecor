@@ -46,40 +46,6 @@ const Hero = (props) => {
               </SwiperSlide>
             );
           })}
-          {/* <SwiperSlide>
-            <div className="w-full hero-slider">
-              <div className="absolute slider-text-content">
-                <h1 className="mb-5 text-5xl font-extrabold text-center text-white ">
-                  We Are Leading The Way Construction Works
-                </h1>
-                <div className="mt-5 text-center">
-                  <Cta url="/" text="Get started!" />
-                </div>
-              </div>
-              <Image
-                className="object-cover"
-                src="/img/bg-img/1.jpg"
-                layout="fill"
-              />
-            </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <div className="w-full hero-slider">
-              <div className="absolute slider-text-content">
-                <h1 className="mb-5 text-5xl font-extrabold text-center text-white ">
-                  Fastest-Growing Construction Company
-                </h1>
-                <div className="mt-5 text-center">
-                  <Cta url="/" text="Get started!" />
-                </div>
-              </div>
-              <Image
-                className="object-cover"
-                src="/img/bg-img/2.jpg"
-                layout="fill"
-              />
-            </div>
-          </SwiperSlide> */}
         </Swiper>
       </div>
     );
