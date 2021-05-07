@@ -1,5 +1,5 @@
 module.exports = {
     images: {
-      domains: ['drive.google.com','localhost:1337','localhost','moldecor.herokuapp.com'],
+      domains: ['drive.google.com','localhost:1337','localhost','moldecor.herokuapp.com','res.cloudinary.com'],
     },
   }

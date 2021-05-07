@@ -6,13 +6,17 @@ const ProductCard = (props) => {
     const singleProd = useContext(SingleProductContext);
     const populateSingleProd = () => {
         singleProd.setProd({
-                imageURL: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}${props.product.Product_Image.url}`,
-                imageWidth: props.product.Product_Image.width,
-                imageHeight: props.product.Product_Image.height,
-                name: props.product.Name,
-                price: props.product.PVP,
-            }
-        );
+          imageURL: props.product.Product_Image.url,
+          imageWidth: props.product.Product_Image.width,
+          imageHeight: props.product.Product_Image.height,
+          name: props.product.Name,
+          price: props.product.PVP,
+          imageData: props.product.Image_data,
+          brand: props.product.brand,
+          category: props.product.category,
+          material: props.product.Material,
+          mesures: props.product.Measures,
+        });
         console.log(singleProd.slideProd)
     }
     return (
@@ -21,13 +25,13 @@ const ProductCard = (props) => {
           <div className="relative product-image">
             <Image
               className="rounded-md "
-              src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${props.product.Product_Image.url}`}
+              src={`${props.product.Product_Image.url}`}
               width={props.product.Product_Image.width}
               height={props.product.Product_Image.height}
             />
           </div>
           <div className="py-5 product-detail px-7">
-            <h3 className='font-bold '>{props.product.Name}</h3>
+            <h3 className='font-bold '>{props.product.brand.Name} {props.product.Name} ( {props.product.Measures.H}cm )</h3>
             <p>${props.product.PVP}</p>
             {/* <div className="product-item-measures">
               <h4>Medidas</h4>

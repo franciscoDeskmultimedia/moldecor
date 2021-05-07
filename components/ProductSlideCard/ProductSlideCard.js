@@ -1,3 +1,6 @@
+import SwiperCore, { Navigation, Pagination, EffectFade } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import SingleProductContext from '../../store/single-product';
@@ -11,6 +14,11 @@ const ProductSlideCard = (props) => {
       imageHeight: "",
       name: "",
       price: "",
+      imageData: "",
+      brand: "",
+      category: "",
+      material: "",
+      mesures: "",
     };
     const theprod = useContext(SingleProductContext);
     return (
@@ -25,7 +33,7 @@ const ProductSlideCard = (props) => {
             theprod.setProd(clean);
           }}
         ></div>
-        <div className="z-50 w-full h-screen px-10 py-5 overflow-y-scroll bg-white sm:w-3/5 lg:w-2/5">
+        <div className="relative z-50 w-full h-screen px-10 py-5 overflow-y-scroll bg-white sm:w-3/5 lg:w-2/5">
           <div className="relative flex mb-5">
             <p
               className="flex items-center w-1/3"
@@ -39,19 +47,78 @@ const ProductSlideCard = (props) => {
             </p>
             <h1 className="text-3xl ">Detalles</h1>
           </div>
-          <Image
-            layout="responsive"
-            src={
-              props.prodItem.imageURL
-                ? props.prodItem.imageURL
-                : "/img/moldecor-logo2.png"
-            }
-            width={props.prodItem.imageWidth}
-            height={props.prodItem.imageHeight}
-          />
+          <Swiper
+            className="category-slider"
+            spaceBetween={30}
+            slidesPerView={1}
+            navigation
+          >
+            <SwiperSlide>
+              <Image
+                layout="responsive"
+                src={
+                  props.prodItem.imageURL
+                    ? props.prodItem.imageURL
+                    : "/img/moldecor-logo2.png"
+                }
+                width={props.prodItem.imageWidth}
+                height={props.prodItem.imageHeight}
+              />
+            </SwiperSlide>
+            {props.prodItem.imageData ? (
+              <SwiperSlide>
+                <Image
+                  layout="responsive"
+                  src={
+                    props.prodItem.imageData
+                      ? props.prodItem.imageData.url
+                      : "/img/moldecor-logo2.png"
+                  }
+                  width={props.prodItem.imageWidth}
+                  height={props.prodItem.imageHeight}
+                />
+              </SwiperSlide>
+            ) : null}
+          </Swiper>
+
           <div className="mt-10">
-            <p className="text-bold">{props.prodItem.name}</p>
+            <p className="font-bold ">
+              {props.prodItem.brand.Name} {props.prodItem.name} ({" "}
+              {props.prodItem.mesures.H}cm )
+            </p>
             <p>${props.prodItem.price}</p>
+            <div className="mt-5">
+              <h3 className="mb-2 text-xl font-bold">Categoria : </h3>
+              <p>{props.prodItem.category.Name}</p>
+            </div>
+            <div className="mt-5">
+              <h3 className="mb-2 text-xl font-bold">Material : </h3>
+              <p>{props.prodItem.material.Material}</p>
+            </div>
+            <div className="mt-5">
+              <h3 className="mb-2 text-xl font-bold">Medidas : </h3>
+              <div className="flex flex-wrap">
+                {props.prodItem.mesures.H ? (
+                  <p className="w-full md:w-1/3">
+                    H : {props.prodItem.mesures.H}cm{" "}
+                  </p>
+                ) : null}
+                {props.prodItem.mesures.W ? (
+                  <p className="w-full md:w-1/3">
+                    W : {props.prodItem.mesures.W}cm{" "}
+                  </p>
+                ) : null}
+                {props.prodItem.mesures.L ? (
+                  <p className="w-full md:w-1/3">
+                    L : {props.prodItem.mesures.L}cm{" "}
+                  </p>
+                ) : null}
+              </div>
+            </div>
+
+          </div>
+          <div className='w-full px-2 py-2 mt-10 text-center bg-black morebutton'>
+            <div className='py-2 m-auto text-white bg-black border-2 border-white'>VER MAS</div>
           </div>
         </div>
       </div>

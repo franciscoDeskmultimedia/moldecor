@@ -7,6 +7,7 @@ import SingleProductContext from '../store/single-product';
 import ProductSlideCard from '../components/ProductSlideCard/ProductSlideCard';
 import {useContext} from 'react';
 import CatgoriesSlide from '../components/CategoriesSlide/CategoriesSlide';
+import Footer from '../components//Footer/Footer';
 import Image from 'next/image';
 
 
@@ -44,10 +45,12 @@ export default function Home({prods, home, categories }) {
           );
         })}
       </div>
+
+      
       
         <ProductSlideCard prodItem={selectedProd.slideProd} />
       
-
+        <Footer/>
       {/* <div>
         <p>{selectedProd.slideProd ? selectedProd.slideProd.name : null}</p>
       </div> */}

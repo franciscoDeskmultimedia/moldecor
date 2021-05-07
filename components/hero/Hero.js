@@ -39,7 +39,7 @@ const Hero = (props) => {
                   </div>
                   <Image
                     className="object-cover"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${item.hero_image.url}`}
+                    src={`${item.hero_image.url}`}
                     layout="fill"
                   />
                 </div>

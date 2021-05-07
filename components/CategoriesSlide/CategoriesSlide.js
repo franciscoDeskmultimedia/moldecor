@@ -19,23 +19,22 @@ const CategoriesSlide = (props) => {
         <Swiper
           className="category-slider"
           spaceBetween={30}
-          slidesPerView={2}
+          slidesPerView={5}
           navigation
           breakpoints={{
-            '640': {
+            1024: {
+              slidesPerView: 5,
+              spaceBetweenSlides: 30,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetweenSlides: 30,
+            },
+            640: {
               slidesPerView: 2,
               spaceBetweenSlides: 30,
             },
-            '768': {
-              slidesPerView: 3,
-              spaceBetweenSlides: 40,
-            },
-            '1024': {
-              slidesPerView: 5,
-              spaceBetweenSlides: 40,
-            },
           }}
-          loop={true}
         >
           {props.cat.map((item) => {
             return (
@@ -52,10 +51,7 @@ const CategoriesSlide = (props) => {
                 >
                   <Image
                     className="rounded-lg "
-                    src={
-                      process.env.NEXT_PUBLIC_STRAPI_API_URL +
-                      item.category_image.url
-                    }
+                    src={item.category_image.url}
                     width={item.category_image.width}
                     height={item.category_image.height}
                   />

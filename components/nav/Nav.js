@@ -9,15 +9,17 @@ const Nav = () => {
   const searchHandle = (event) => {
     search.setSearch(()=>{return(event.target.value)})
     console.log(event.target.value)
-    window.scrollTo({ top: 500, behavior: 'smooth' })
+    if(event.target.value != ''){
+      window.scrollTo({ top: 500, behavior: 'smooth' })
+    }
   }
     return (
       <div className="fixed top-0 left-0 z-30 w-full bg-gray-800 moldenav ">
         <div className="px-4 mx-auto max-w-7xl sm:px-6">
           <div className="flex items-center justify-between py-6 md:justify-start md:space-x-10">
-            <div className="flex justify-start lg:w-0 lg:flex-1">
+            <div className="flex justify-start flex-grow w-min h-min lg:w-0 lg:flex-1">
               <Link href="/">
-                <a>
+                <a className='leading-none '>
                   <Image
                     className="w-auto h-8 cursor-pointer sm:h-10"
                     src="/img/moldecor-logo-white.png"
@@ -52,8 +54,8 @@ const Nav = () => {
                 </svg>
               </button> */}
             </div>
-            <div className='search'>
-              <input onChange={searchHandle} type='text' />
+            <div className='flex justify-center flex-grow search '>
+              <input className='w-2/3 h-10 px-8 rounded-sm' onChange={searchHandle} type='text' placeholder='Search' />
             </div>
             {/* <nav className="hidden space-x-10 md:flex">
               <Link href="/">
@@ -80,7 +82,7 @@ const Nav = () => {
                 </a>
               </Link>
             </nav> */}
-            <div className="items-center justify-end hidden md:flex md:flex-1 lg:w-0">
+            <div className="items-center justify-end flex-grow hidden md:flex md:flex-1 lg:w-0">
               <Link href="/contacto">
                 <a className="px-5 py-3 text-base font-medium text-gray-500 border-2 border-gray-500 whitespace-nowrap hover:text-gray-900">
                   Contacto

@@ -16,6 +16,11 @@ function MyApp({ Component, pageProps }) {
     imageHeight: "",
     name: "",
     price: "",
+    imageData: "",
+    brand:"",
+    category:"",
+    material:"",
+    mesures:""
   });
   const [catFilter, setCatFilter] = useState('')
   const [search,setSearch] = useState('')
