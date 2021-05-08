@@ -84,7 +84,7 @@ const Nav = () => {
             </nav> */}
             <div className="items-center justify-end flex-grow hidden md:flex md:flex-1 lg:w-0">
               <Link href="/contacto">
-                <a className="px-5 py-3 text-base font-medium text-gray-500 border-2 border-gray-500 whitespace-nowrap hover:text-gray-900">
+                <a className="px-5 py-3 text-base font-medium text-white border-2 border-white hover:text-gray-300 hover:border-gray-300 whitespace-nowrap">
                   Contacto
                 </a>
               </Link>

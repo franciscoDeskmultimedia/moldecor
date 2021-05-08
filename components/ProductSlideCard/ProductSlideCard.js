@@ -115,8 +115,8 @@ const ProductSlideCard = (props) => {
             </div>
 
           </div>
-          <div className='w-full px-2 py-2 mt-10 text-center bg-black morebutton'>
-            <div className='py-2 m-auto text-white bg-black border-2 border-white'>VER MAS</div>
+          <div className='w-full px-2 py-2 mt-10 text-center bg-gray-600 morebutton hover:bg-gray-800'>
+            <div className='py-2 m-auto text-white bg-gray-600 border-2 border-white hover:bg-gray-800'>VER MÁS</div>
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export default function Home({prods, home, categories }) {
       <Nav></Nav>
 
       {/* <Hero /> */}
-      <div className=' mt-28'>
+      <div className='mt-24'>
         {home.map((item) => {
           return (
             <div
