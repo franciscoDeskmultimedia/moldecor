@@ -19,7 +19,7 @@ const CategoriesSlide = (props) => {
         <Swiper
           className="category-slider"
           spaceBetween={30}
-          slidesPerView={5}
+          slidesPerView={2}
           navigation
           breakpoints={{
             1024: {

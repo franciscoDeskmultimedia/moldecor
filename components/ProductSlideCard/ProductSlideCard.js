@@ -83,10 +83,8 @@ const ProductSlideCard = (props) => {
 
           <div className="mt-10">
             <p className="font-bold ">
-              {props.prodItem.brand.Name} {props.prodItem.name} ({" "}
-              {props.prodItem.mesures.H}cm )
+             {props.prodItem.name} {props.prodItem.brand.Name}  ({props.prodItem.mesures.H} )
             </p>
-            <p>${props.prodItem.price}</p>
             <div className="mt-5">
               <h3 className="mb-2 text-xl font-bold">Categoria : </h3>
               <p>{props.prodItem.category.Name}</p>
@@ -100,17 +98,17 @@ const ProductSlideCard = (props) => {
               <div className="flex flex-wrap">
                 {props.prodItem.mesures.H ? (
                   <p className="w-full md:w-1/3">
-                    H : {props.prodItem.mesures.H}cm{" "}
+                    H : {props.prodItem.mesures.H}
                   </p>
                 ) : null}
                 {props.prodItem.mesures.W ? (
                   <p className="w-full md:w-1/3">
-                    W : {props.prodItem.mesures.W}cm{" "}
+                    W : {props.prodItem.mesures.W}
                   </p>
                 ) : null}
                 {props.prodItem.mesures.L ? (
                   <p className="w-full md:w-1/3">
-                    L : {props.prodItem.mesures.L}cm{" "}
+                    L : {props.prodItem.mesures.L}
                   </p>
                 ) : null}
               </div>

@@ -29,7 +29,8 @@ const Hero = (props) => {
                       {item.text}
                     </h1>
                     <div className="mt-5 text-center">
-                      <Cta url={item.button_url} text={item.button_text} />
+                      {item.button_url ? <Cta url={item.button_url} text={item.button_text ? item.button_text : 'Click aquí' } /> : null }
+                      {/* <Cta url={item.button_url} text={item.button_text} /> */}
                       {/* <Link href="/">
                     <a className="px-5 py-3 text-white bg-blue-500">
                       Get started!

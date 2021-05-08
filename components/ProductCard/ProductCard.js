@@ -20,7 +20,7 @@ const ProductCard = (props) => {
         console.log(singleProd.slideProd)
     }
     return (
-      <div className={`w-full px-3 py-4 sm:w-1/3 lg:w-1/5 md:w-1/4 ${!props.product.Name.toLowerCase().includes(singleProd.search.toLowerCase()) ? 'hidden' : null }`} onClick={populateSingleProd}>
+      <div className={`w-1/2 px-3 py-4 sm:w-1/3 lg:w-1/5 md:w-1/4 ${!props.product.Name.toLowerCase().includes(singleProd.search.toLowerCase()) ? 'hidden' : null }`} onClick={populateSingleProd}>
         <div className="rounded-md shadow-lg">
           <div className="relative product-image">
             <Image
@@ -31,8 +31,8 @@ const ProductCard = (props) => {
             />
           </div>
           <div className="py-5 product-detail px-7">
-            <h3 className='font-bold '>{props.product.brand.Name} {props.product.Name} ( {props.product.Measures.H}cm )</h3>
-            <p>${props.product.PVP}</p>
+            <h3 className='font-bold '>{props.product.Name} {props.product.brand.Name}</h3>
+            <p>{props.product.Measures.H}</p>
             {/* <div className="product-item-measures">
               <h4>Medidas</h4>
               <ul className='pl-3 '>
