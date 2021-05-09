@@ -12,6 +12,8 @@ const SingleProductContext = createContext({
     category: "",
     material: "",
     mesures: "",
+    galleries:"",
+    productApplication:"",
   },
   setProd: () => {},
   catFilter: "",

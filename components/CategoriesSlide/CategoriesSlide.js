@@ -42,7 +42,7 @@ const CategoriesSlide = (props) => {
                 <div
                   className={`w-full ${
                     catFilter.catFilter == item.Name
-                      ? " border-gray-500 border rounded-lg transition-all duration-200"
+                      ? " rounded-lg transition-all duration-200 p-5 text-white bg-gray-600"
                       : " transition-all duration-200 "
                   } `}
                   onClick={() => {
@@ -50,7 +50,7 @@ const CategoriesSlide = (props) => {
                   }}
                 >
                   <Image
-                    className="rounded-lg "
+                    className="rounded-lg"
                     src={item.category_image.url}
                     width={item.category_image.width}
                     height={item.category_image.height}

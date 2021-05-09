@@ -20,7 +20,9 @@ function MyApp({ Component, pageProps }) {
     brand:"",
     category:"",
     material:"",
-    mesures:""
+    mesures:"",
+    galleries:"",
+    productApplication:"",
   });
   const [catFilter, setCatFilter] = useState('')
   const [search,setSearch] = useState('')

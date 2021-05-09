@@ -16,6 +16,8 @@ const ProductCard = (props) => {
           category: props.product.category,
           material: props.product.Material,
           mesures: props.product.Measures,
+          galleries:props.product.galleries,
+          productApplication:props.product.Product_application,
         });
         console.log(singleProd.slideProd)
     }

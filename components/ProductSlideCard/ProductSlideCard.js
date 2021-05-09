@@ -19,6 +19,8 @@ const ProductSlideCard = (props) => {
       category: "",
       material: "",
       mesures: "",
+      galleries:"",
+      productApplication:"",
     };
     const theprod = useContext(SingleProductContext);
     return (
@@ -52,6 +54,7 @@ const ProductSlideCard = (props) => {
             spaceBetween={30}
             slidesPerView={1}
             navigation
+            autoHeight={true}
           >
             <SwiperSlide>
               <Image
@@ -79,6 +82,19 @@ const ProductSlideCard = (props) => {
                 />
               </SwiperSlide>
             ) : null}
+            {props.prodItem.productApplication ? props.prodItem.productApplication.map((item)=>{
+              return (
+                <SwiperSlide>
+                  <Image
+                    layout="responsive"
+                    src={item.url}
+                    width={item.width}
+                    height={item.height }
+                  />
+                </SwiperSlide>
+              );
+            }) : null}
+            
           </Swiper>
 
           <div className="mt-10">
