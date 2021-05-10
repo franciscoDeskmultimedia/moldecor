@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Nav from "../../components/nav/Nav";
+import Nav from "../../components/Nav/Nav";
 import {getAllProductsSlug, getSingleProduct} from '../../lib/api';
 import SwiperCore, { Navigation, Pagination, EffectFade, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
