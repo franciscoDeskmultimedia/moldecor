@@ -18,6 +18,7 @@ const ProductCard = (props) => {
           mesures: props.product.Measures,
           galleries:props.product.galleries,
           productApplication:props.product.Product_application,
+          slug:props.product.slug,
         });
         console.log(singleProd.slideProd)
     }

@@ -21,6 +21,7 @@ const ProductSlideCard = (props) => {
       mesures: "",
       galleries:"",
       productApplication:"",
+      slug:""
     };
     const theprod = useContext(SingleProductContext);
     return (
@@ -82,24 +83,26 @@ const ProductSlideCard = (props) => {
                 />
               </SwiperSlide>
             ) : null}
-            {props.prodItem.productApplication ? props.prodItem.productApplication.map((item)=>{
-              return (
-                <SwiperSlide>
-                  <Image
-                    layout="responsive"
-                    src={item.url}
-                    width={item.width}
-                    height={item.height }
-                  />
-                </SwiperSlide>
-              );
-            }) : null}
-            
+            {props.prodItem.productApplication
+              ? props.prodItem.productApplication.map((item) => {
+                  return (
+                    <SwiperSlide>
+                      <Image
+                        layout="responsive"
+                        src={item.url}
+                        width={item.width}
+                        height={item.height}
+                      />
+                    </SwiperSlide>
+                  );
+                })
+              : null}
           </Swiper>
 
           <div className="mt-10">
             <p className="font-bold ">
-             {props.prodItem.name} {props.prodItem.brand.Name}  ({props.prodItem.mesures.H} )
+              {props.prodItem.name} {props.prodItem.brand.Name} (
+              {props.prodItem.mesures.H} )
             </p>
             <div className="mt-5">
               <h3 className="mb-2 text-xl font-bold">Categoria : </h3>
@@ -129,10 +132,13 @@ const ProductSlideCard = (props) => {
                 ) : null}
               </div>
             </div>
-
           </div>
-          <div className='w-full px-2 py-2 mt-10 text-center bg-gray-600 morebutton hover:bg-gray-800'>
-            <div className='py-2 m-auto text-white bg-gray-600 border-2 border-white hover:bg-gray-800'>VER MÁS</div>
+          <div className="w-full px-2 py-2 mt-10 text-center bg-gray-600 morebutton hover:bg-gray-800">
+            <div className="py-2 m-auto text-white bg-gray-600 border-2 border-white hover:bg-gray-800">
+              <Link href={`/products/${props.prodItem.slug}`}>
+                <a>VER MÁS</a>
+              </Link>
+            </div>
           </div>
         </div>
       </div>

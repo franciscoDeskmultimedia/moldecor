@@ -7,7 +7,7 @@ import SingleProductContext from '../store/single-product';
 import ProductSlideCard from '../components/ProductSlideCard/ProductSlideCard';
 import {useContext} from 'react';
 import CatgoriesSlide from '../components/CategoriesSlide/CategoriesSlide';
-import Footer from '../components//Footer/Footer';
+import Footer from '../components/Footer/Footer';
 import Image from 'next/image';
 
 
@@ -16,13 +16,12 @@ export default function Home({prods, home, categories }) {
   return (
     <div>
       <Head>
-        <title>Moldecor</title>
+        <title>Productos | Moldecor</title>
         <link
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet"
         ></link>
-        {/* <link rel="icon" href="/favicon-white.png" />
-        <link rel="stylesheet" href="css/style-main.css"></link> */}
+        {/* <link rel="icon" href="/favicon-white.png" /> */}
       </Head>
       <Nav></Nav>
 

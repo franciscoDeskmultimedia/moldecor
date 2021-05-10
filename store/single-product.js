@@ -14,6 +14,7 @@ const SingleProductContext = createContext({
     mesures: "",
     galleries:"",
     productApplication:"",
+    slug:"",
   },
   setProd: () => {},
   catFilter: "",
