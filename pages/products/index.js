@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import Nav from "../../components/Nav/Nav";
+import Nav from "../../components/nav/Nav";
 import {  getProducts, getCategories } from "../../lib/api";
 import ProductGrid from '../../components/ProductGrid/ProductGrid';
 import SingleProductContext from '../../store/single-product';
