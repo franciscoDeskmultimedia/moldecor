@@ -5,12 +5,16 @@ import SwiperCore, { Navigation, Pagination, EffectFade, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Footer from '../../components/Footer/Footer';
 import Image from 'next/image';
+import { useRouter } from 'next/router'
 
 SwiperCore.use([Navigation,Thumbs]);
 
 const Product =  ({product}) => {
-    console.log(product[0])
+    const router = useRouter();
     const prod = product[0];
+    if (router.isFallback) {
+      return <div>Loading...</div>
+    }
     return (
       <div>
         <Head>
@@ -81,6 +85,7 @@ export async function getStaticProps({ params }) {
       props: {
         product
       },
+      revalidate: 1,
     };
 }
   
@@ -92,7 +97,7 @@ export async function getStaticPaths() {
             {params: {slug: item.slug}}
         )
     }) ,
-    fallback:false
+    fallback:true
   };
 }
 
