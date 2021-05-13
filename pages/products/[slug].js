@@ -11,95 +11,145 @@ SwiperCore.use([Navigation,Thumbs]);
 
 const Product =  ({product}) => {
     const router = useRouter();
-    const prod = product[0];
+    const prod = product;
     if (router.isFallback) {
       return <div>Loading...</div>
-    }
-    return (
-      <div>
-        <Head>
-          <title>Productos | Moldecor</title>
-          <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-          ></link>
-          {/* <link rel="icon" href="/favicon-white.png" /> */}
-        </Head>
-        <Nav></Nav>
-        <div className="max-w-6xl m-auto mt-28">
-            <h1 className='pt-20 text-6xl mb-14 font-extralight'>{prod.Name} <span className='font-normal '>{prod.brand.Name}</span></h1>
-          <div className="flex flex-wrap prodDispplay">
-            <div className="relative w-full md:w-1/2">
-              <Swiper
-                spaceBetween={30}
-                slidesPerView={1}
-                navigation
-                autoHeight={true}
-              >
-                <SwiperSlide>
-                    <Image src={prod.Product_Image.url} layout='responsive' width={prod.Product_Image.width} height={prod.Product_Image.height} />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Image src={prod.Image_data.url} layout='responsive' width={prod.Image_data.width} height={prod.Image_data.height} />
-                </SwiperSlide>
-                {prod.Product_application ? (prod.Product_application.map((item,i)=>{
-                    return (
-                      <SwiperSlide key={i}>
+    }else{  
+      return (
+        <div>
+          <Head>
+            <title>Productos | Moldecor</title>
+            <link
+              href="https://fonts.googleapis.com/icon?family=Material+Icons"
+              rel="stylesheet"
+            ></link>
+          </Head>
+          <Nav></Nav>
+          {prod.map((item,i)=>{
+            return (
+              <div key={i} className="max-w-6xl m-auto mt-28">
+                <h1 className="pt-20 text-6xl mb-14 font-extralight">
+                  {item.Name ? item.Name : "Product Name"}{" "}
+                  <span className="font-normal ">
+                    {item.brand.Name ? item.brand.Name : "Brand"}
+                  </span>
+                </h1>
+                <div className="flex flex-wrap prodDispplay">
+                  <div className="relative w-full md:w-1/2">
+                    <Swiper
+                      spaceBetween={30}
+                      slidesPerView={1}
+                      navigation
+                      autoHeight={true}
+                    >
+                      <SwiperSlide>
                         <Image
-                          src={item.url}
-                          layout='responsive'
-                          width={item.width}
-                          height={item.height}
+                          src={
+                            item.Product_Image
+                              ? item.Product_Image.url
+                              : "/img/bg-img/12.jpg"
+                          }
+                          layout="responsive"
+                          width={
+                            item.Product_Image ? item.Product_Image.width : 500
+                          }
+                          height={
+                            item.Product_Image ? item.Product_Image.height : 500
+                          }
                         />
                       </SwiperSlide>
-                    );
-                })) : null } 
-              </Swiper>
-            </div>
-            <div className="w-full px-10 md:w-1/2">
-                <h3 className='text-2xl text-gray-800 underline '>Información del producto</h3>
-                <div className='mt-5'>
-                    <h3 className='px-5 py-2 text-2xl text-white bg-gray-600'>Medidas</h3>
-                    <div>
-                        {prod.Measures.H ? <p>H: {prod.Measures.H}</p> : null}
-                        {prod.Measures.W ? <p>W: {prod.Measures.W}</p> : null}
-                        {prod.Measures.L ? <p>L: {prod.Measures.L}</p> : null}
+                      <SwiperSlide>
+                        <Image
+                          src={
+                            item.Image_data
+                              ? item.Image_data.url
+                              : "/img/bg-img/12.jpg"
+                          }
+                          layout="responsive"
+                          width={item.Image_data ? item.Image_data.width : 500}
+                          height={
+                            item.Image_data ? item.Image_data.height : 500
+                          }
+                        />
+                      </SwiperSlide>
+                      {item.Product_application
+                        ? item.Product_application.map((slide, i) => {
+                            return (
+                              <SwiperSlide key={i}>
+                                <Image
+                                  src={slide.url}
+                                  layout="responsive"
+                                  width={slide.width}
+                                  height={slide.height}
+                                />
+                              </SwiperSlide>
+                            );
+                          })
+                        : null}
+                    </Swiper>
+                  </div>
+                  <div className="w-full px-10 md:w-1/2">
+                    <h3 className="text-2xl text-gray-800 underline ">
+                      Información del producto
+                    </h3>
+                    <div className="mt-5">
+                      <h3 className="px-5 py-2 text-2xl text-white bg-gray-600">
+                        Medidas
+                      </h3>
+                      <div>
+                        {item.Measures.H ? (
+                          <p>H: {item.Measures.H ? item.Measures.H : null}</p>
+                        ) : null}
+                        {item.Measures.W ? (
+                          <p>W: {item.Measures.W ? item.Measures.W : null}</p>
+                        ) : null}
+                        {item.Measures.L ? (
+                          <p>L: {item.Measures.L ? item.Measures.L : null}</p>
+                        ) : null}
+                      </div>
                     </div>
+                    <div>
+                      <h3>Categoría</h3>
+                      <p>
+                        {item.category.Name
+                          ? item.category.Name
+                          : "Category Name"}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div>
-                    <h3>Categoría</h3>
-                    <p>{prod.category.Name}</p>
-                </div>
-            </div>
-          </div>
+              </div>
+            );
+          })}
+          
         </div>
-      </div>
-    );
+      );
+      
+    }
+    
 }
 
 export default Product;
 
-export async function getStaticProps({ params }) {
-    const product = await getSingleProduct(params.slug)
-    return {
-      props: {
-        product
-      },
-      revalidate: 1,
-    };
-}
+
   
 export async function getStaticPaths() {
-  const test = await getAllProductsSlug();
+  const slugs = await getAllProductsSlug();
   return {
-    paths: test.map((item)=>{
-        return (
-            {params: {slug: item.slug}}
-        )
-    }) ,
-    fallback:true
+    paths: slugs.map((item)=>{
+        return { params: { slug: item.slug} };
+    }),
+    fallback: true,
   };
 }
 
-
+export async function getStaticProps({ params }) {
+  const product = await getSingleProduct(params.slug)
+  return {
+    props: {
+      product,
+    },
+    revalidate: 1,
+  };
+}
   
